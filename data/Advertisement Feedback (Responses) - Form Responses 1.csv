@@ -1,0 +1,45 @@
+Timestamp,What is your age ?,What is your gender ?,Where are you located ?,What is your highest level of education ?,What is your yearly income ?,What is your occupation ?,How much time did you spend viewing the ad ?,Did you find the ad relevant to you ?,How would you rate your interest in the product after viewing the ad ?,What device did you mostly see this Ad on ?,What was your response to the Ad ?,"If not, why didn’t you click on the ad ?",Did you intend to purchase the product/service after seeing the ad ?,Have you purchased the product / service ?,Was your purchase influenced by other factors ?,Where did you purchase the product ?,Did the advertisement influence your purchase decision ?,Select any one of the Ads you have seen.
+10/19/2024 16:11:03,34,Male,Urban,Bachelor's Degree,500000,Civil Engineer, 5 - 20,Yes,4,Smartphone,Clicked,,Yes,Yes,Brand Value,Online,Yes,Titan Watch Ad
+10/19/2024 16:11:57,24,Male,Sub-urban,Bachelor's Degree,400000,Electrician,20 - 30,Yes,3,Smartphone,Ignored,,Yes,No,,,,cometuniverse sneakers Ad
+10/19/2024 16:13:50,28,Female,Urban,Master's Degree,800000,Software Developer, 5 - 20,Yes,4,Tablet,Clicked,,Yes,Yes,Past Experience,Online,Yes,Dell Laptop Ad
+10/19/2024 16:14:48,24,Male,Sub-urban,Bachelor's Degree,500000,Marketing Manager, 5 - 20,Yes,5,Desktop,Clicked,,Yes,Yes,Peer Recommendations,In-store,No,Logitech mouse Ad
+10/19/2024 16:15:41,30,Female,Sub-urban,PhD,1000000,Data Scientist,30 - 40,Yes,4,Smartphone,Clicked,,Yes,No,,,,Samsung Galaxy Zflip6 Ad
+10/19/2024 16:16:34,20,Female,Rural,Highschool,400000,Teacher, 5 - 20,Yes,5,Smartphone,Clicked,,Yes,No,,,,H&M Ad
+10/19/2024 16:17:57,40,Male,Urban,Master's Degree,1200000,Product Manager,20 - 30,Yes,4,Desktop,Clicked,,Yes,Yes,Past Experience,In-store,Yes,Lenskart Ad
+10/19/2024 16:18:53,19,Female,Rural,Highschool,250000,Artist, 5 - 20,Yes,3,Smartphone,Ignored,,Yes,Yes,Discounts,Online,Yes,Zapvi Mobile Cover Ad
+10/19/2024 16:19:51,32,Female,Sub-urban,PhD,700000,Journalist,30 - 40,Yes,4,Smartphone,Clicked,,Yes,No,,,,neemans sneakers Ad
+10/19/2024 16:23:40,45,Male,Urban,Highschool,600000,Carpenter, 5 - 20,Yes,5,Smartphone,Clicked,,Yes,Yes,Brand Value,In-store,Yes,Titan Watch Ad
+10/19/2024 16:24:27,22,Male,Rural,Highschool,500000,Farmer, 5 - 20,Yes,5,Smartphone,Clicked,,Yes,Yes,Peer Recommendations,Online,Yes,Muscleblaze Ad
+10/19/2024 16:25:18,27,Female,Urban,Master's Degree,850000,Architect,40 - 60,Yes,4,Desktop,Clicked,,No,No,,,,Dell Laptop Ad
+10/19/2024 16:26:26,36,Female,Rural,Highschool,450000,Teacher,20 - 30,No,2,Smartphone,Ignored,,No,No,,,,Samsung Galaxy Zflip6 Ad
+10/19/2024 16:29:14,18,Male,Rural,Highschool,0,Student,0 - 5,No,1,Smartphone,Ignored,,No,No,,,,H&M Ad
+10/19/2024 16:30:03,52,Female,Urban,Master's Degree,0,Housewife, 5 - 20,Yes,3,Smartphone,Clicked,,Yes,Yes,Past Experience,Online,Yes,Lenskart Ad
+10/19/2024 16:30:47,25,Female,Rural,Bachelor's Degree,600000,Pharmacist, 5 - 20,Yes,3,Smartphone,Clicked,,Yes,No,,,,Zapvi Mobile Cover Ad
+10/19/2024 16:32:06,42,Male,Sub-urban,Highschool,800000,Police Officer, 5 - 20,Yes,4,Smartphone,Clicked,,Yes,Yes,Peer Recommendations,Online,No,neemans sneakers Ad
+10/19/2024 16:32:47,23,Female,Urban,Bachelor's Degree,750000,Business Analyst,30 - 40,Yes,3,Desktop,Clicked,,Yes,No,,,,H&M Ad
+10/19/2024 16:33:44,26,Female,Rural,Highschool,0,Unemployed,40 - 60,Yes,4,Smartphone,Clicked,,Yes,Yes,Past Experience,Online,No,Muscleblaze Ad
+10/19/2024 16:34:50,33,Male,Urban,PhD,1500000,Software Developer, 5 - 20,Yes,5,Tablet,Clicked,,Yes,Yes,Brand Value,Online,Yes,Titan Watch Ad
+10/19/2024 16:35:48,21,Other,Urban,Bachelor's Degree,500000,Chef, 5 - 20,Yes,4,Smartphone,Ignored,,Yes,No,,,,cometuniverse sneakers Ad
+10/19/2024 16:36:33,28,Male,Sub-urban,Master's Degree,1200000,Scientist,40 - 60,Yes,5,Desktop,Clicked,,Yes,No,,,,Dell Laptop Ad
+10/19/2024 16:37:38,19,Female,Rural,Highschool,350000,Artist,30 - 40,No,2,Smartphone,Ignored,,No,No,,,,Lenskart Ad
+10/19/2024 16:38:37,36,Male,Urban,PhD,1800000,Professor,30 - 40,Yes,4,Desktop,Clicked,,Yes,Yes,Brand Value,Online,Yes,Samsung Galaxy Zflip6 Ad
+10/19/2024 16:39:21,19,Female,Sub-urban,Bachelor's Degree,0,Student, 5 - 20,Yes,3,Tablet,Clicked,,Yes,No,,,,H&M Ad
+10/19/2024 16:41:18,24,Female,Rural,Bachelor's Degree,500000,Nurse,20 - 30,Yes,4,Smartphone,Clicked,,Yes,Yes,Peer Recommendations,Online,No,neemans sneakers Ad
+10/19/2024 16:41:56,20,Male,Sub-urban,Bachelor's Degree,0,Student,20 - 30,Yes,4,Desktop,Ignored,,No,No,,,,Lenskart Ad
+10/19/2024 16:42:56,27,Male,Urban,Bachelor's Degree,650000,Accountant,20 - 30,Yes,4,Smartphone,Clicked,,Yes,Yes,Discounts,Online,Yes,Muscleblaze Ad
+10/19/2024 16:43:41,30,Male,Urban,Master's Degree,1600000,Doctor,30 - 40,Yes,5,Smartphone,Clicked,,Yes,No,,,,Samsung Galaxy Zflip6 Ad
+10/19/2024 16:44:25,48,Male,Urban,Master's Degree,1300000,Banker,30 - 40,Yes,3,Desktop,Clicked,,Yes,No,,,,Logitech mouse Ad
+10/19/2024 16:45:36,23,Female,Rural,Bachelor's Degree,700000,Veterinarian,30 - 40,Yes,5,Tablet,Clicked,,Yes,Yes,Brand Value,Online,Yes,H&M Ad
+10/19/2024 16:46:36,32,Female,Sub-urban,Master's Degree,1000000,Accountant,40 - 60,Yes,4,Desktop,Clicked,,Yes,Yes,Peer Recommendations,Online,No,Lenskart Ad
+10/19/2024 16:47:25,26,Male,Sub-urban,Master's Degree,1200000,Engineer,30 - 40,Yes,4,Desktop,Ignored,,No,No,,,,Titan Watch Ad
+10/19/2024 16:48:02,20,Female,Urban,Bachelor's Degree,0,Student, 5 - 20,No,2,Smartphone,Ignored,,No,No,,,,Zapvi Mobile Cover Ad
+10/19/2024 16:50:12,21,Male,Sub-urban,Highschool,0,Unemployed,0 - 5,No,1,Smartphone,Ignored,,No,No,,,,Lenskart Ad
+10/19/2024 16:50:44,19,Female,Rural,Highschool,0,Unemployed, 5 - 20,No,1,Smartphone,Ignored,,No,No,,,,Titan Watch Ad
+10/19/2024 16:51:26,22,Male,Sub-urban,Highschool,350000,Mechanic,0 - 5,No,1,Smartphone,Ignored,,No,No,,,,Logitech mouse Ad
+10/19/2024 16:52:25,23,Female,Sub-urban,Bachelor's Degree,600000,Sales Executive, 5 - 20,No,1,Smartphone,Ignored,,No,No,,,,Dell Laptop Ad
+10/19/2024 16:53:10,26,Female,Urban,Bachelor's Degree,530000,Journalist, 5 - 20,No,2,Smartphone,Ignored,,No,No,,,,cometuniverse sneakers Ad
+10/19/2024 16:53:52,19,Male,Sub-urban,Bachelor's Degree,570000,Photographer,0 - 5,No,3,Smartphone,Ignored,,No,No,,,,H&M Ad
+10/19/2024 16:54:45,25,Male,Sub-urban,Highschool,400000,Welder,0 - 5,No,2,Smartphone,Ignored,,No,No,,,,Lenskart Ad
+10/19/2024 16:55:37,22,Female,Rural,Bachelor's Degree,200000,Social Worker, 5 - 20,No,1,Smartphone,Ignored,,No,No,,,,Zapvi Mobile Cover Ad
+10/19/2024 16:56:37,26,Female,Urban,Bachelor's Degree,725000,Web Developer, 5 - 20,Yes,3,Tablet,Ignored,,No,No,,,,Samsung Galaxy Zflip6 Ad
+10/19/2024 16:57:19,26,Female,Urban,Highschool,0,Housewife,0 - 5,No,1,Smartphone,Ignored,,No,No,,,,Muscleblaze Ad
