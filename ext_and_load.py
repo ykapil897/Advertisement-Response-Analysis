@@ -2,7 +2,8 @@ from pymongo import MongoClient
 import pandas as pd
 import os
 
-client = MongoClient("mongodb://172.31.99.238:27017")
+# client = pymongo.MongoClient("mongodb://172.31.99.238:27017")
+client = pymongo.MongoClient("mongodb://docker.host.internal:27017")
 db = client["advertisement_response_analysis"]
 
 workbook1_path = "/app/data/survey_data_with_demographics.xlsx"
