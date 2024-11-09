@@ -1,4 +1,4 @@
-from pymongo import MongoClient
+import pymongo
 import pandas as pd
 import os
 
