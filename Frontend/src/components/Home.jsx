@@ -8,52 +8,18 @@ const Home = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
-    // Mock data for testing the UI
-    const mockImages = [
-      {
-        title: 'Plot 1',
-        src: 'https://via.placeholder.com/300?text=Plot+1',
-      },
-      {
-        title: 'Plot 2',
-        src: 'https://via.placeholder.com/300?text=Plot+2',
-      },
-      {
-        title: 'Plot 3',
-        src: 'https://via.placeholder.com/300?text=Plot+3',
-      },
-      {
-        title: 'Plot 4',
-        src: 'https://via.placeholder.com/300?text=Plot+3',
-      },
-      {
-        title: 'Plot 5',
-        src: 'https://via.placeholder.com/300?text=Plot+3',
-      },
-      {
-        title: 'Plot 6',
-        src: 'https://via.placeholder.com/300?text=Plot+3',
-      },
-      {
-        title: 'Plot 7',
-        src: 'https://via.placeholder.com/300?text=Plot+3',
-      },
-      {
-        title: 'Plot 8',
-        src: 'https://via.placeholder.com/300?text=Plot+3',
-      },
-      {
-        title: 'Plot 9',
-        src: 'https://via.placeholder.com/300?text=Plot+3',
-      },
-      {
-        title: 'Plot 10',
-        src: 'https://via.placeholder.com/300?text=Plot+3',
-      },
-      // Add more mock images as needed
-    ];
+    // Fetch images from the backend
+    const fetchImages = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/chart/');
+        const data = await response.json();
+        setImages(data);
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
 
-    setImages(mockImages);
+    fetchImages();
   }, []);
 
   const handleViewImage = (image) => {
@@ -62,7 +28,7 @@ const Home = () => {
 
   const handleDownloadImage = (image) => {
     const link = document.createElement('a');
-    link.href = image.src;
+    link.href = `data:image/png;base64,${image.image}`;
     link.download = image.title;
     document.body.appendChild(link);
     link.click();
@@ -78,7 +44,7 @@ const Home = () => {
           {images.map((image, index) => (
             <div key={index} className="border p-6 rounded-lg shadow-lg w-full md:w-1/3 lg:w-1/4 flex flex-col items-center">
               <h2 className="text-xl font-semibold mb-4 text-center">{image.title}</h2>
-              <img src={image.src} alt={image.title} className="mb-4 rounded-lg" />
+              <img src={`data:image/png;base64,${image.image}`} alt={image.title} className="mb-4 rounded-lg" />
               <div className="flex justify-between w-full">
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded flex items-center mr-2 justify-center w-1/2 text-xs"
@@ -109,7 +75,7 @@ const Home = () => {
             >
               Close
             </button>
-            <img src={selectedImage.src} alt={selectedImage.title} className="rounded-lg" />
+            <img src={`data:image/png;base64,${selectedImage.image}`} alt={selectedImage.title} className="rounded-lg" />
           </div>
         </div>
       )}
