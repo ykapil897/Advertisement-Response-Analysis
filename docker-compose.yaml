@@ -8,6 +8,7 @@ services:
     volumes:
       - ./tmp:/app/tmp  # Persist temp files if needed
     entrypoint: ["python", "run_all.py"]  # Run once
+    network_mode: "host"
 
   scheduler:
     build:
@@ -15,6 +16,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./tmp:/app/tmp  # Persist temp files if needed
+    network_mode: "host"
     command: >
       /bin/sh -c "while :; do python ld_gform_responses.py; sleep 2; done"  # Runs every 2 minutes
 
@@ -24,5 +26,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./tmp:/app/tmp  # Persist temp files if needed
+    network_mode: "host"
     command: >
       /bin/sh -c "while :; do python clean_and_transform.py; sleep 5; done"  # Runs every 5 minutes
