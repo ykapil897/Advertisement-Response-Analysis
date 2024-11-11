@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import pymongo
+
+MONGO_CLIENT = pymongo.MongoClient("mongodb://0.0.0.0:27017/")
+MONGO_DB = MONGO_CLIENT["ad_response_analysis_tf"]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
