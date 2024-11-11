@@ -5,6 +5,7 @@ from datetime import datetime
 # client = pymongo.MongoClient("mongodb://172.31.99.238:27017")
 client = pymongo.MongoClient("mongodb://0.0.0.0:27017")
 # client = pymongo.MongoClient("mongodb://docker.host.internal:27017")
+
 db = client["advertisement_response_analysis"]
 db_tf = client["ad_response_analysis_tf"]
 

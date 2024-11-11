@@ -5,10 +5,11 @@ import os
 # client = pymongo.MongoClient("mongodb://172.31.99.238:27017")
 client = pymongo.MongoClient("mongodb://0.0.0.0:27017")
 # client = pymongo.MongoClient("mongodb://docker.host.internal:27017")
+
 db = client["advertisement_response_analysis"]
 
-# workbook1_path = "/app/data/survey_data_with_demographics.xlsx"
-workbook1_path = "/home/vivek/DE-Project/Advertisement-Response-Analysis/data/survey_data_with_demographics.xlsx"
+workbook1_path = "/app/data/survey_data_with_demographics.xlsx"
+# workbook1_path = "/home/vivek/DE-Project/Advertisement-Response-Analysis/data/survey_data_with_demographics.xlsx"
 
 def load_workbook1_data(workbook1_path):
 

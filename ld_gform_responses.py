@@ -4,15 +4,17 @@ import pymongo
 import os
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuration
-# SERVICE_ACCOUNT_FILE = "/app/credentials/ad-response-analysis-project-516611e46d99.json"  # Replace with your credentials JSON file path
-# SERVICE_ACCOUNT_FILE = "/app/credentials/ad-response-analysis-project-key2-9803513e2f0e.json"  # Replace with your credentials JSON file path
-SERVICE_ACCOUNT_FILE = "/home/vivek/DE-Project/Advertisement-Response-Analysis/credentials/ad-response-analysis-project-key2-9803513e2f0e.json"  # Replace with your credentials JSON file path
-SPREADSHEET_ID = "19f6p4G20P3rF9TK2qOTAOvh8k4spFFuvQnJ-zFTU1PY"  # Replace with your Google Sheet ID
-RANGE_NAME = "Form Responses 1!A:S"  # Replace with the sheet name and range
-# LAST_PROCESSED_TIMESTAMP_FILE = "/app/tmp/last_processed_timestamp.txt"  # Store the last processed timestamp
-LAST_PROCESSED_TIMESTAMP_FILE = "/home/vivek/DE-Project/Advertisement-Response-Analysis/tmp/last_processed_timestamp.txt"  # Store the last processed timestamp
+SERVICE_ACCOUNT_FILE = "/app/credentials/ad-response-analysis-project-key2-9803513e2f0e.json"  # Replace with your credentials JSON file path
+# SERVICE_ACCOUNT_FILE = "/home/vivek/DE-Project/Advertisement-Response-Analysis/credentials/ad-response-analysis-project-key2-9803513e2f0e.json"  # Replace with your credentials JSON file path
+SPREADSHEET_ID = os.getenv("SPREADSHEET_ID")  
+RANGE_NAME = "Form Responses 1!A:S"  
+LAST_PROCESSED_TIMESTAMP_FILE = "/app/tmp/last_processed_timestamp.txt"  # Store the last processed timestamp
+# LAST_PROCESSED_TIMESTAMP_FILE = "/home/vivek/DE-Project/Advertisement-Response-Analysis/tmp/last_processed_timestamp.txt"  # Store the last processed timestamp
 
 # client = pymongo.MongoClient("mongodb://172.31.99.238:27017")
 client = pymongo.MongoClient("mongodb://0.0.0.0:27017")
