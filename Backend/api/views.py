@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 import base64
-from .services import fetch_data_from_mongo, create_ad_topic_percentage_plot
+from .services import fetch_data_from_mongo, create_all_charts
 
 @csrf_exempt
 def get_data(request):
@@ -15,18 +15,8 @@ def get_data(request):
 
 def get_chart(request):
     if request.method == 'GET':
-        # Create the plot
-        buf = create_ad_topic_percentage_plot()
-        image_data = buf.getvalue()
-
-        # Create a list of images with titles
-        images = []
-        for i in range(10):
-            images.append({
-                "title": f"Chart {i+1}",
-                "image": base64.b64encode(image_data).decode('utf-8')
-            })
-
+        # Get all charts
+        images = create_all_charts()
         return JsonResponse(images, safe=False)
 
     return HttpResponse(status=405)
