@@ -143,9 +143,9 @@ def transform_income_level(df):
         if income < 20000:
             return "<20k"
         elif income < 50000:
-            return "20k - 50k"
+            return "20k-50k"
         elif income < 100000:
-            return "50k - 100k"
+            return "50k-100k"
         else:
             return ">100k"
 
@@ -318,7 +318,7 @@ def calculate_metrics():
 
     ad_views = responses_df['AdID'].value_counts()
     ad_clicks = responses_df[responses_df['ResponseType'] == 'Clicked']['AdID'].value_counts()
-    print(ad_clicks)
+    # print(ad_clicks)
     ctr_df = (ad_clicks / ad_views).fillna(0).to_frame(name="Click_Through_Rate")
 
     conversions = purchases_df['AdID'].value_counts()
