@@ -3,9 +3,9 @@ import pymongo
 from datetime import datetime
 
 # client = pymongo.MongoClient("mongodb://172.31.99.238:27017")
-# client = pymongo.MongoClient("mongodb://0.0.0.0:27017") # for without docker
+client = pymongo.MongoClient("mongodb://0.0.0.0:27017") # for without docker
 # clinet = pymongo.MongoClient("mongodb://host.docker.internal:27017") # for docker on windows
-client = pymongo.MongoClient("mongodb://172.17.0.1:27017") # for docker on linux (ubuntu)
+# client = pymongo.MongoClient("mongodb://172.17.0.1:27017") # for docker on linux (ubuntu)
 
 db = client["advertisement_response_analysis"]
 db_tf = client["ad_response_analysis_tf"]
@@ -109,10 +109,11 @@ def transform_education_level(df):
     df['Education Level'] = df['Education Level'].str.lower()
 
     df['Education Level'] = df['Education Level'].replace({
-        'high school': 'Highschool',
+        'high school': 'High School',
+        'Highschool': 'High School',
         'bachelor\'s degree': 'Bachelors',
         'master\'s degree': 'Masters',
-        'highschool': 'Highschool',
+        'highschool': 'High School',
         'bachelor': 'Bachelors',
         'master': 'Masters'
     })
@@ -316,7 +317,8 @@ def calculate_metrics():
     purchases_df = pd.DataFrame(list(db["purchase_info"].find()))
 
     ad_views = responses_df['AdID'].value_counts()
-    ad_clicks = responses_df[responses_df['ResponseType'] == 'click']['AdID'].value_counts()
+    ad_clicks = responses_df[responses_df['ResponseType'] == 'Clicked']['AdID'].value_counts()
+    print(ad_clicks)
     ctr_df = (ad_clicks / ad_views).fillna(0).to_frame(name="Click_Through_Rate")
 
     conversions = purchases_df['AdID'].value_counts()

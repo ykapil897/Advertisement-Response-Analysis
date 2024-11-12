@@ -3,14 +3,14 @@ import pandas as pd
 import os
 
 # client = pymongo.MongoClient("mongodb://172.31.99.238:27017")
-# client = pymongo.MongoClient("mongodb://0.0.0.0:27017") # for without docker
+client = pymongo.MongoClient("mongodb://0.0.0.0:27017") # for without docker
 # client = pymongo.MongoClient("mongodb://host.docker.internal:27017") # for docker on windows
-client = pymongo.MongoClient("mongodb://172.17.0.1:27017") # for docker on linux (ubuntu)
+# client = pymongo.MongoClient("mongodb//172.17.0.1:27017") # for docker on linux (ubuntu)
 
 db = client["advertisement_response_analysis"]
 
-workbook1_path = "/app/data/survey_data_with_demographics.xlsx" # for docker
-# workbook1_path = "/home/vivek/DE-Project/Advertisement-Response-Analysis/data/survey_data_with_demographics.xlsx" # for without docker
+# workbook1_path = "/app/data/advertisement_response_data.xlsx" # for docker
+workbook1_path = "/home/vivek/DE-Project/Advertisement-Response-Analysis/data/advertisement_response_data.xlsx" # for without docker
 
 def load_workbook1_data(workbook1_path):
 
