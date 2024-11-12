@@ -143,7 +143,7 @@ def transform_income_level(df):
         if income < 20000:
             return "<20k"
         elif income < 50000:
-            return "10k - 50k"
+            return "20k - 50k"
         elif income < 100000:
             return "50k - 100k"
         else:
