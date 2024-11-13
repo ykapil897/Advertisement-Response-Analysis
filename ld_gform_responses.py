@@ -20,6 +20,7 @@ LAST_PROCESSED_TIMESTAMP_FILE = "/mnt/c/de/project/Advertisement-Response-Analys
 client = pymongo.MongoClient("mongodb://127.0.0.1:27017") # for without docker
 # client = pymongo.MongoClient("mongodb://host.docker.internal:27017") # for docker on windows
 # client = pymongo.MongoClient("mongodb://172.17.0.1:27017") # for docker on linux (ubuntu)
+client = pymongo.MongoClient("mongodb://127.0.0.1:27017") # for docker on linux (ubuntu)
 
 db = client["advertisement_response_analysis"]
 
