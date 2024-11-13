@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faDownload } from '@fortawesome/free-solid-svg-icons';
+import DOMPurify from 'dompurify';
 
 const Home = () => {
   const [images, setImages] = useState([]);
@@ -51,7 +52,7 @@ const Home = () => {
                 
                 <div className="flex flex-col w-full md:w-1/4 lg:w-2/3">
                   <div className="border p-4 rounded-lg bg-gray-100 mb-4 text-sm text-black">
-                    <p>Summary or analysis metrics here (replace this with actual data)</p>
+                  <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(image.summary.replace(/\n/g, '<br/>')) }} />
                   </div>
                   
                   <div className="flex justify-center flex-wrap gap-2">
