@@ -36,11 +36,7 @@ const Analyse = () => {
   };
 
   const handleGetAnalysis = async () => {
-    const csrfToken = getCookie('csrftoken');  // Ensure the name matches the cookie set by Django
-    // if (!csrfToken) {
-    //   console.error('CSRF token not found');
-    //   return;
-    // }
+    const csrfToken = getCookie('csrftoken'); 
 
     if (!selectedCombination) {
       console.error('No combination selected');
@@ -58,7 +54,6 @@ const Analyse = () => {
         body: JSON.stringify({ chart_type: selectedCombination}),
       });
       const data = await response.json();
-      // console.log(data);
       setAnalysisResult(data[0]);
     } catch (error) {
       console.error('Error fetching analysis:', error);
@@ -82,30 +77,32 @@ const Analyse = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen pt-16">
-        <h1 className="text-3xl font-bold mb-4">Analyse Data</h1>
-        <p>Select attributes to display charts and graphs.</p>
-        
-        <div className="flex flex-col items-center gap-4 mt-4">
-          <select
-            value={selectedCombination}
-            onChange={(e) => setSelectedCombination(e.target.value)}
-            className="border p-2 rounded"
-          >
-            <option value="" disabled>Select a combination</option>
-            {combinations.map((combination) => (
-              <option key={combination.value} value={combination.value}>
-                {combination.label}
-              </option>
-            ))}
-          </select>
+      <div className="flex flex-col justify-center items-center min-h-screen pt-8 mx-auto w-screen">
+        <div className="flex flex-col w-full px-4 justify-center items-center">
+          <h1 className="text-3xl font-bold mb-4 mt-8 pt-4">Analyse Data</h1>
+          <p>Select attributes to display charts and graphs.</p>
           
-          <button
-            onClick={handleGetAnalysis}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-          >
-            Get Analysis
-          </button>
+          <div className="flex flex-col items-center gap-4 mt-4">
+            <select
+              value={selectedCombination}
+              onChange={(e) => setSelectedCombination(e.target.value)}
+              className="border p-2 rounded"
+            >
+              <option value="" disabled>Select a combination</option>
+              {combinations.map((combination) => (
+                <option key={combination.value} value={combination.value}>
+                  {combination.label}
+                </option>
+              ))}
+            </select>
+            
+            <button
+              onClick={handleGetAnalysis}
+              className="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Get Analysis
+            </button>
+          </div>
         </div>
 
         {analysisResult && (

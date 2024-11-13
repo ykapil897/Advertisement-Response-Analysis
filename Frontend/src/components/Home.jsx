@@ -39,7 +39,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen pt-16 px-4">
+      <div className="flex flex-col items-center justify-center min-h-screen pt-16 px-4 w-screen">
         <h1 className="text-3xl font-bold mb-8 mt-8 text-center">Advertisement Response Analysis</h1>
         
         <div className="w-full flex flex-col gap-8 px-4">
