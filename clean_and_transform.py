@@ -3,7 +3,7 @@ import pymongo
 from datetime import datetime
 
 # client = pymongo.MongoClient("mongodb://172.31.99.238:27017")
-client = pymongo.MongoClient("mongodb://0.0.0.0:27017") # for without docker
+client = pymongo.MongoClient("mongodb://127.0.0.1:27017") # for without docker
 # clinet = pymongo.MongoClient("mongodb://host.docker.internal:27017") # for docker on windows
 # client = pymongo.MongoClient("mongodb://172.17.0.1:27017") # for docker on linux (ubuntu)
 
