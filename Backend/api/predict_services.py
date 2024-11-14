@@ -51,10 +51,22 @@ def predictions_cr_ctr(input_data):
     # Convert specified columns to integers
     df['AdCost'] = df['AdCost'].astype(int)
     df['PurchaseAmount'] = df['PurchaseAmount'].astype(int)
-    df['ModeEngagementTime'] = df['ModeEngagementTime'].astype(int)
 
-    # One-hot encode the specified columns
-    encoded_df = pd.get_dummies(df, columns=['AdPlatformName', 'AdPlatformType', 'AdTopic', 'AdType'])
+    # Load the saved OneHotEncoder
+    encoder = joblib.load('onehot_encoder.joblib')
+
+    # Columns to be one-hot encoded
+    categorical_columns = ['AdPlatformName', 'AdPlatformType', 'AdTopic', 'AdType']
+
+    # Transform the categorical columns using the loaded encoder
+    encoded_array = encoder.transform(df[categorical_columns])
+
+    # Create a DataFrame with the encoded columns
+    encoded_df = pd.DataFrame(encoded_array, columns=encoder.get_feature_names_out(categorical_columns))
+
+    # Drop the original categorical columns and concatenate the encoded columns
+    df = df.drop(columns=categorical_columns)
+    df = pd.concat([df, encoded_df], axis=1)
 
     # Load the models
     model_cr = joblib.load('models/model_cr.joblib')
