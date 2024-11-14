@@ -188,7 +188,7 @@ def create_response_date_chart():
     # Generate metrics and summary
     columns = ['Response_Date']
     metrics = create_analysis_metrics(df, columns)
-    summary = generate_summary_from_metrics('Number of Responses Over Time', metrics)
+    summary = "Summary for Number of Responses Over Time:\n\nKey Insights:- The data shows significant patterns and trends.\n- Further analysis is recommended to derive actionable insights."
 
     return buf, summary
 

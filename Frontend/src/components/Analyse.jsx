@@ -44,6 +44,7 @@ const Analyse = () => {
     }
   
     try {
+      // console.log(selectedCombination);
       const response = await fetch('http://127.0.0.1:8000/api/customchart/', {
         method: 'POST',
         headers: {
@@ -54,7 +55,9 @@ const Analyse = () => {
         body: JSON.stringify({ chart_type: selectedCombination}),
       });
       const data = await response.json();
+      // console.log(data);
       setAnalysisResult(data[0]);
+      // console.log(analysisResult);
     } catch (error) {
       console.error('Error fetching analysis:', error);
     }
