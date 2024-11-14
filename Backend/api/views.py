@@ -5,6 +5,7 @@ from .chart_services import fetch_data_from_mongo, create_all_charts
 from .dyn_chart_services import create_custom_chart, get_chart_names_list
 from django.shortcuts import render
 import json
+from .predict_services import predictions_cr_ctr, predictions_decision, get_dropdown_values
 
 @ensure_csrf_cookie
 def index(request):
@@ -50,3 +51,29 @@ def get_custom_chart(request):
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
     return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+@csrf_exempt
+def get_predict(request):
+    if request.method == 'POST':
+        try:
+            body = json.loads(request.body)
+            model_inputs = body.get('model_inputs')
+            # print(chart_type)
+            if not model_inputs:
+                return JsonResponse({'error': 'No model_inputs provided'}, status=400)
+            
+            if model_inputs['Model'] == 'Model1':
+                result = predictions_cr_ctr(model_inputs)
+            else :
+                result = predictions_decision(model_inputs)
+
+            return JsonResponse(result, safe=False)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+            
+    elif request.method == 'GET':
+        values = get_dropdown_values()
+        return JsonResponse(values)
+    
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
+
