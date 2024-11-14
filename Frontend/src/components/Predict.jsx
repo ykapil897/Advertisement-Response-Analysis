@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 
 const Predict = () => {
-  const [inputs, setInputs] = useState({});
-  const [dropdownOptions, setDropdownOptions] = useState({AdTopic: ['Education', 'Health']});
-  const [prediction, setPrediction] = useState('');
+  const [model1_inputs, setInputs1] = useState({Model: 'Model1'});
+  const [model2_inputs, setInputs2] = useState({Model: 'Model2'});
+  const [dropdownOptions, setDropdownOptions] = useState({});
+  const [prediction1, setPrediction1] = useState('');
+  const [prediction2, setPrediction2] = useState('');
 
   useEffect(() => {
     const fetchDropdownOptions = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/predict');
+        const response = await fetch('http://localhost:8000/api/predict/');
         const data = await response.json();
-        // setDropdownOptions(data);
+        setDropdownOptions(data);
       } catch (error) {
         console.error('Error fetching dropdown options:', error);
       }
@@ -22,27 +24,50 @@ const Predict = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setInputs((prevInputs) => ({
+    setInputs1((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+    setInputs2((prevInputs) => ({
       ...prevInputs,
       [name]: value,
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit1 = async (e) => {
     e.preventDefault();
     try {
-      console.log(inputs);
-      const response = await fetch('http://localhost:8000/api/predict', {
+      console.log(model1_inputs);
+      const response = await fetch('http://localhost:8000/api/predict/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ model_inputs: inputs }),
+        body: JSON.stringify({ model_inputs: model1_inputs }),
       });
       const data = await response.json();
-      setPrediction(`Predicted CTR: ${data.ctr}%, Conversion Rate: ${data.conversionRate}%`);
+      setPrediction1(`Predicted CTR: ${data.ctr}%, Conversion Rate: ${data.conversionRate}%`);
     } catch (error) {
-      console.error('Error fetching prediction:', error);
+      console.error('Error fetching prediction1:', error);
+    }
+  };
+
+  const handleSubmit2 = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(model2_inputs);
+      const response = await fetch('http://localhost:8000/api/predict/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ model_inputs: model2_inputs }),
+      });
+      const data = await response.json();
+      console.log(data);
+      setPrediction2(`Predicted Ad Topic: ${data.predicted_topics[0]}`);
+    } catch (error) {
+      console.error('Error fetching prediction1:', error);
     }
   };
 
@@ -52,18 +77,18 @@ const Predict = () => {
       <div className="flex flex-col md:flex-row gap-8 px-8 md:px-6 w-screen">
         <div className="flex flex-col items-center justify-center min-h-screen pt-16 w-full px-4">
           <h1 className="text-3xl font-bold mb-4">Predict CTR and Conversion Rate</h1>
-          <form onSubmit={handleSubmit} className="mb-4 w-full max-w-md">
+          <form onSubmit={handleSubmit1} className="mb-4 w-full max-w-md">
             <input
               type="text"
               name="Model"
-              value={inputs.Model || 'Model1'}
+              value={model1_inputs.Model || 'Model1'}
               className="border p-2 rounded w-full mb-2"
               placeholder="Prediction Type 1"
             />
             <input
               type="number"
               name="AdCost"
-              value={inputs.AdCost || ''}
+              value={model1_inputs.AdCost || ''}
               onChange={handleChange}
               className="border p-2 rounded w-full mb-2"
               placeholder="Ad Cost"
@@ -71,14 +96,14 @@ const Predict = () => {
             <input
               type="number"
               name="PurchaseAmount"
-              value={inputs.PurchaseAmount || ''}
+              value={model1_inputs.PurchaseAmount || ''}
               onChange={handleChange}
               className="border p-2 rounded w-full mb-2"
               placeholder="Purchase Amount"
             />
             <select
               name="AdPlatformName"
-              value={inputs.AdPlatformName || ''}
+              value={model1_inputs.AdPlatformName || ''}
               onChange={handleChange}
               className="border p-2 rounded w-full mb-2"
             >
@@ -91,7 +116,7 @@ const Predict = () => {
             </select>
             <select
               name="AdPlatformType"
-              value={inputs.AdPlatformType || ''}
+              value={model1_inputs.AdPlatformType || ''}
               onChange={handleChange}
               className="border p-2 rounded w-full mb-2"
             >
@@ -104,7 +129,7 @@ const Predict = () => {
             </select>
             <select
               name="AdType"
-              value={inputs.AdType || ''}
+              value={model1_inputs.AdType || ''}
               onChange={handleChange}
               className="border p-2 rounded w-full mb-2"
             >
@@ -117,7 +142,7 @@ const Predict = () => {
             </select>
             <select
               name="AdTopic"
-              value={inputs.AdTopic || ''}
+              value={model1_inputs.AdTopic || ''}
               onChange={handleChange}
               className="border p-2 rounded w-full mb-2"
             >
@@ -130,21 +155,21 @@ const Predict = () => {
             </select>
             <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full">Get Prediction</button>
           </form>
-          {prediction && <p className="text-xl font-bold">{prediction}</p>}
+          {prediction1 && <p className="text-xl font-bold">{prediction1}</p>}
         </div>
         <div className="flex flex-col items-center justify-center min-h-screen pt-16 w-full">
           <h1 className="text-3xl font-bold mb-4">Predict Recommended Ad Topic</h1>
-          <form onSubmit={handleSubmit} className="mb-4 w-full max-w-md">
+          <form onSubmit={handleSubmit2} className="mb-4 w-full max-w-md">
             <input
               type="text"
               name="Model"
-              value={inputs.Model || 'Model2'}
+              value={model2_inputs.Model || 'Model2'}
               className="border p-2 rounded w-full mb-2"
               placeholder="Prediction Type 2"
             />
             <select
               name="Age"
-              value={inputs.Age || ''}
+              value={model2_inputs.Age || ''}
               onChange={handleChange}
               className="border p-2 rounded w-full mb-2"
             >
@@ -156,47 +181,8 @@ const Predict = () => {
               ))}
             </select>
             <select
-              name="Gender"
-              value={inputs.Gender || ''}
-              onChange={handleChange}
-              className="border p-2 rounded w-full mb-2"
-            >
-              <option value="">Select Gender</option>
-              {dropdownOptions.Gender?.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-            <select
-              name="Location"
-              value={inputs.Location || ''}
-              onChange={handleChange}
-              className="border p-2 rounded w-full mb-2"
-            >
-              <option value="">Select Location</option>
-              {dropdownOptions.Location?.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-            <select
-              name="Income_Level"
-              value={inputs.Income_Level || ''}
-              onChange={handleChange}
-              className="border p-2 rounded w-full mb-2"
-            >
-              <option value="">Select Income Level</option>
-              {dropdownOptions.Income_Level?.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-            <select
-              name="Education_Level"
-              value={inputs.Education_Level || ''}
+              name="Education Level"
+              value={model2_inputs.Education_Level || ''}
               onChange={handleChange}
               className="border p-2 rounded w-full mb-2"
             >
@@ -208,8 +194,47 @@ const Predict = () => {
               ))}
             </select>
             <select
+              name="Gender"
+              value={model2_inputs.Gender || ''}
+              onChange={handleChange}
+              className="border p-2 rounded w-full mb-2"
+            >
+              <option value="">Select Gender</option>
+              {dropdownOptions.Gender?.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <select
+              name="Income Level"
+              value={model2_inputs.Income_Level || ''}
+              onChange={handleChange}
+              className="border p-2 rounded w-full mb-2"
+            >
+              <option value="">Select Income Level</option>
+              {dropdownOptions.Income_Level?.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <select
+              name="Location"
+              value={model2_inputs.Location || ''}
+              onChange={handleChange}
+              className="border p-2 rounded w-full mb-2"
+            >
+              <option value="">Select Location</option>
+              {dropdownOptions.Location?.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <select
               name="Occupation"
-              value={inputs.Occupation || ''}
+              value={model2_inputs.Occupation || ''}
               onChange={handleChange}
               className="border p-2 rounded w-full mb-2"
             >
@@ -222,7 +247,7 @@ const Predict = () => {
             </select>
             <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full">Get Prediction</button>
           </form>
-          {prediction && <p className="text-xl font-bold">{prediction}</p>}
+          {prediction2 && <p className="text-xl font-bold">{prediction2}</p>}
         </div>
       </div>
     </div>
