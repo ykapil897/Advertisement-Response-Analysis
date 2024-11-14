@@ -14,7 +14,7 @@ const Predict = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen pt-16">
+      <div className="flex flex-col items-center justify-center min-h-screen pt-16 w-screen">
         <h1 className="text-3xl font-bold mb-4">Predict CTR and Conversion Rate</h1>
         <div className="mb-4 w-full max-w-md">
           <input
