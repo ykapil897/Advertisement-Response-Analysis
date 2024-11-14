@@ -6,9 +6,7 @@ import joblib
 INCOME_LEVELS = ['20k-50k', '50k-100k', '<20k', '>100k']
 EDUCATION_LEVELS = ['Bachelors', 'High School', 'Masters', 'PhD']
 OCCUPATIONS = ['Artist', 'Doctor', 'Engineer', 'Marketing Manager', 'Salesperson', 'Teacher']
-PLATFORM_NAMES = {
-    ["News Channel", "Movie Channel", "Sports Channel", "Music Channel", "Kids Channel", "Google", "Bing", "Yahoo", "Facebook", "YouTube", "Instagram", "Twitter", "LinkedIn", "Snapchat", "Threads","Netflix", "Amazon Prime", "Hotstar", "JioTV", "Zee5"],
-}
+PLATFORM_NAMES = ["News Channel", "Movie Channel", "Sports Channel", "Music Channel", "Kids Channel", "Google", "Bing", "Yahoo", "Facebook", "YouTube", "Instagram", "Twitter", "LinkedIn", "Snapchat", "Threads","Netflix", "Amazon Prime", "Hotstar", "JioTV", "Zee5"]
 PLATFORM_TYPES1 = ["TV", "Search Engine", "Social Media", "Streaming"]
 PLATFORM_TYPES = ['Amazon Prime', 'Bing', 'Facebook', 'Google', 'Hotstar', 'Instagram', 'JioTV', 'Kids Channel', 'LinkedIn', 'Movie Channel', 'Music Channel', 'Netflix', 'News Channel', 'Snapchat', 'Sports Channel', 'Threads', 'Twitter', 'Yahoo', 'YouTube', 'Zee5']
 AGE_RANGES = ['18-30', '30-45', '45-60', '<18' '>60']
@@ -46,8 +44,9 @@ def get_dropdown_values():
 
 def predictions_cr_ctr(input_data):
     # Convert JSON input to DataFrame
-    data = json.loads(input_data)
-    df = pd.DataFrame(data)
+    # data = json.loads(input_data)
+    df = pd.DataFrame([input_data])
+    df = df.drop(columns=['Model'])
 
     # Convert specified columns to integers
     df['AdCost'] = df['AdCost'].astype(int)
@@ -78,8 +77,9 @@ def predictions_cr_ctr(input_data):
 
 def predictions_decision(input_data):
     # Convert JSON input to DataFrame
-    data = json.loads(input_data)
-    df = pd.DataFrame(data)
+    # data = json.loads(input_data)
+    df = pd.DataFrame([input_data])
+    df = df.drop(columns=['Model'])
 
     # Replace strings with their corresponding index numbers
     for column, values in categorical_values.items():
@@ -87,17 +87,17 @@ def predictions_decision(input_data):
             df[column] = df[column].apply(lambda x: values.index(x) if x in values else x)
 
     # Add a column 'Response_Type' with value 0
-    df['Response_Type'] = 0
+    df['ResponseType'] = 0
 
         # Load the decision tree model
-    decision_tree = joblib.load('models/decision_tree.joblib')
+    decision_tree = joblib.load('/home/vivek/DE-Project/Advertisement-Response-Analysis/Backend/api/models/decision_tree.joblib')
 
     # Predict the response
     predictions = decision_tree.predict(df)
-
+    print(predictions)
     # Convert the predictions to the corresponding topics
     predicted_topics = [TOPICS[pred] for pred in predictions]
-
+    print(predicted_topics)
     # Create response dictionary
     response = {
         'predicted_topics': predicted_topics
