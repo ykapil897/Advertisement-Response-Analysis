@@ -54,8 +54,8 @@ def predictions_cr_ctr(input_data):
 
     # Load the saved OneHotEncoder
     # encoder = joblib.load('models/onehot_encoder.joblib')
-    encoder = joblib.load('/home/vivek/DE-Project/Advertisement-Response-Analysis/Backend/api/models/onehot_encoder.joblib')
-    # encoder = joblib.load('/app/api/models/onehot_encoder.joblib')
+    # encoder = joblib.load('/home/vivek/DE-Project/Advertisement-Response-Analysis/Backend/api/models/onehot_encoder.joblib')
+    encoder = joblib.load('/app/api/models/onehot_encoder.joblib')
 
     # Columns to be one-hot encoded
     categorical_columns = ['AdPlatformName', 'AdPlatformType', 'AdTopic', 'AdType']
@@ -71,11 +71,11 @@ def predictions_cr_ctr(input_data):
     df = pd.concat([df, encoded_df], axis=1)
 
     # Load the models
-    model_cr = joblib.load('/home/vivek/DE-Project/Advertisement-Response-Analysis/Backend/api/models/model_cr.joblib')
-    model_ctr = joblib.load('/home/vivek/DE-Project/Advertisement-Response-Analysis/Backend/api/models/model_ctr.joblib')
+    # model_cr = joblib.load('/home/vivek/DE-Project/Advertisement-Response-Analysis/Backend/api/models/model_cr.joblib')
+    # model_ctr = joblib.load('/home/vivek/DE-Project/Advertisement-Response-Analysis/Backend/api/models/model_ctr.joblib')
 
-    # model_cr = joblib.load('/app/api/models/model_cr.joblib')
-    # model_ctr = joblib.load('/app/api/models/model_ctr.joblib')
+    model_cr = joblib.load('/app/api/models/model_cr.joblib')
+    model_ctr = joblib.load('/app/api/models/model_ctr.joblib')
 
     # print(df)
     # Make predictions
@@ -113,8 +113,8 @@ def predictions_decision(input_data):
     df['ResponseType'] = 0
 
         # Load the decision tree model
-    decision_tree = joblib.load('/home/vivek/DE-Project/Advertisement-Response-Analysis/Backend/api/models/decision_tree.joblib')
-    # decision_tree = joblib.load('/app/api/models/decision_tree.joblib')
+    # decision_tree = joblib.load('/home/vivek/DE-Project/Advertisement-Response-Analysis/Backend/api/models/decision_tree.joblib')
+    decision_tree = joblib.load('/app/api/models/decision_tree.joblib')
 
     # Predict the response
     predictions = decision_tree.predict(df)

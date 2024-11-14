@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import pymongo
 
-MONGO_CLIENT = pymongo.MongoClient("mongodb://0.0.0.0:27017/") # without docker
+# MONGO_CLIENT = pymongo.MongoClient("mongodb://0.0.0.0:27017/") # without docker
 MONGO_CLIENT = pymongo.MongoClient("mongodb://172.17.0.1:27017/") # for docker
 MONGO_DB = MONGO_CLIENT["ad_response_analysis_tf"]
 
