@@ -32,16 +32,18 @@ services:
 
   frontend:
     build:
-      context: ./home/vivek/DE-Project/Advertisement-Response-Analysis/Frontend
+      context: /home/vivek/DE-Project/Advertisement-Response-Analysis/Frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "5173:5173"
     depends_on:
       - backend
+    stdin_open: true
+    tty: true
 
   backend:
     build:
-      context: ./home/vivek/DE-Project/Advertisement-Response-Analysis/Backend
+      context: /home/vivek/DE-Project/Advertisement-Response-Analysis/Backend
       dockerfile: Dockerfile
     ports:
       - "8000:8000"

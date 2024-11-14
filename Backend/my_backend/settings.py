@@ -64,6 +64,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # The URL for your React development server
     "http://127.0.0.1:5173",  # The URL for your React development server
+    "http://172.31.99.238:5173",
 ]
 
 # Allow specific HTTP methods
@@ -95,6 +96,7 @@ CSRF_COOKIE_HTTPONLY = False # Allow JavaScript to read the CSRF cookie
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://172.31.99.238:5173",
 ]
 
 # Add CSRF cookie name, this is optional but can help in some cases

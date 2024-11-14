@@ -11,3 +11,4 @@ requests
 joblib
 pymongo
 python-dotenv
+kaleido
