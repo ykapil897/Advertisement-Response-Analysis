@@ -53,8 +53,8 @@ project-root/
 1. **Clone the Repository:**
 
 ```bash
-git clone <https://github.com/viveksapkal2793/Advertisement-Response-Analysis.git>
-cd <Advertisement-Response-Analysis>
+git clone https://github.com/viveksapkal2793/Advertisement-Response-Analysis.git
+cd Advertisement-Response-Analysis
 ```
 
 2. **Set Up Environment Variables:**  
@@ -139,6 +139,6 @@ The Django backend will be running at [http://localhost:8000](http://localhost:8
 
 ## Contributors
 
-- [viveksapkal2003@gmail.com](Vivek Sapkal)
-- [b22ai024@iitj.ac.in](Kapil Yadav)
-- [b22ai010@iitj.ac.in](Bhagwan Arsewad)
+- [Vivek Sapkal](viveksapkal2003@gmail.com)
+- [Kapil Yadav](b22ai024@iitj.ac.in)
+- [Bhagwan Arsewad](b22ai010@iitj.ac.in)
