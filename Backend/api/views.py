@@ -61,12 +61,12 @@ def get_predict(request):
             # print(chart_type)
             if not model_inputs:
                 return JsonResponse({'error': 'No model_inputs provided'}, status=400)
-            print(model_inputs)
+            # print(model_inputs)
             if model_inputs['Model'] == 'Model1':
                 result = predictions_cr_ctr(model_inputs)
             else :
                 result = predictions_decision(model_inputs)
-            print(result)
+            # print(result)
             return JsonResponse(result, safe=False)
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)

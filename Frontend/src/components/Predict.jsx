@@ -46,7 +46,8 @@ const Predict = () => {
         body: JSON.stringify({ model_inputs: model1_inputs }),
       });
       const data = await response.json();
-      setPrediction1(`Predicted CTR: ${data.ctr}%, Conversion Rate: ${data.conversionRate}%`);
+      // console.log(data, data[0], data[0]);
+      setPrediction1(`CTR: ${data[0]}\n Conversion Rate: ${data[1]}`);
     } catch (error) {
       console.error('Error fetching prediction1:', error);
     }
@@ -155,7 +156,11 @@ const Predict = () => {
             </select>
             <button type="submit" className="bg-blue-500 text-white p-2 rounded w-full">Get Prediction</button>
           </form>
-          {prediction1 && <p className="text-xl font-bold">{prediction1}</p>}
+          {prediction1 && (
+            <p className="text-xl font-bold text-wrap" style={{ whiteSpace: 'pre' }}>
+              {prediction1}
+            </p>
+          )}
         </div>
         <div className="flex flex-col items-center justify-center min-h-screen pt-16 w-full">
           <h1 className="text-3xl font-bold mb-4">Predict Recommended Ad Topic</h1>
