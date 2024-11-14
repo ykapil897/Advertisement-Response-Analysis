@@ -11,10 +11,18 @@ This project analyzes advertisement responses using a **Django backend** and a *
 project-root/
 ├── backend/
 ├── frontend/
-├── scripts/
-│   ├── ext_and_load.py
-│   ├── ld_gform_responses.py
-│   └── clean_and_transform.py
+├── data/
+├── credentials/
+├─ ext_and_load.py
+├─ ld_gform_responses.py
+├─ clean_and_transform.py 
+├─ dockerfile 
+├─ .env
+├─ .dockerignore
+├─ .gitignore
+├─ package.json
+├─ package-lock.json
+├─ requirements.txt
 └── docker-compose.yml
 ```
 
@@ -35,6 +43,8 @@ project-root/
 
 - **Docker** and **Docker Compose** installed on your machine.
 - A **MongoDB** instance, either locally or in a Docker container.
+- A google sheets api credentials and google form to collect data from google forms and fetch it using google sheets api
+
 
 ---
 
@@ -43,41 +53,67 @@ project-root/
 1. **Clone the Repository:**
 
 ```bash
-git clone <repository_url>
-cd <repository_name>
+git clone <https://github.com/viveksapkal2793/Advertisement-Response-Analysis.git>
+cd <Advertisement-Response-Analysis>
 ```
 
 2. **Set Up Environment Variables:**  
    Create a `.env` file in the root directory with the following content:
 
-```plaintext
+```
 MONGO_URI=<your_mongodb_uri>
+SPREADSHEET_ID=Your google spreadheets id which is collecting the google form responses
+```
+
+3. Run the following command to install python modules for running data loading and cleaning scripts
+
+```
+pip install -r requirements.txt
+```
+
+4. Similarly run the same command in Backend directory
+
+```
+cd Backend
+pip install -r requirements.txt
+```
+
+5. Run the following command in Frontend directory to install node modules and dependencies
+
+```
+cd Frontend
+npm install
 ```
 
 ### 3. Modify MongoDB Connection Strings
 Adjust the MongoDB connection strings in the scripts (`ext_and_load.py`, `ld_gform_responses.py`, `clean_and_transform.py`) depending on your environment:
 
-- **For Docker:** Use the following connection string:
-```plaintext
-mongodb://172.17.0.1:27017
+- **For Scripts and Backend running in Docker:** Use the following connection string:
+```
+mongodb://172.17.0.1:27017 # for linux
+mongodb://host.docker.internal:27017 # for windows
 ```
 - **For Without Docker:** Use your MongoDB instance's URI, typically:
-```plaintext
+```
 mongodb://127.0.0.1:27017
 ```
 
-### 4. Build and Run Docker Containers
+### 5. Build and Run Docker Containers
 - To build and run the Docker containers, execute the following command:
 
 ```
 docker-compose up --build
 ```
+- To stop the running containers and delete them, execute the following command:
+```
+docker-compose down
+```
 
-### 5. Access the Frontend
+### 6. Access the Frontend
 
 Open your browser and navigate to [http://localhost:5173](http://localhost:5173).
 
-### 6. Access the Backend
+### 7. Access the Backend
 
 The Django backend will be running at [http://localhost:8000](http://localhost:8000).
 
@@ -98,3 +134,11 @@ The Django backend will be running at [http://localhost:8000](http://localhost:8
 - **transformer:** Runs the `clean_and_transform.py` script every 5 minutes.
 - **frontend:** Runs the React frontend.
 - **backend:** Runs the Django backend.
+
+---
+
+## Contributors
+
+- [viveksapkal2003@gmail.com](Vivek Sapkal)
+- [b22ai024@iitj.ac.in](Kapil Yadav)
+- [b22ai010@iitj.ac.in](Bhagwan Arsewad)
