@@ -1,13 +1,13 @@
 # Advertisement Response Analysis Project
 
 ## Introduction
-This project analyzes advertisement responses using a **Django backend** and a **Vite+React frontend**. It includes scripts to load, clean, and transform data, which are executed within Docker containers. Data is stored in a **MongoDB database**, and the project can be run with or without Docker by adjusting the MongoDB connection strings.
+This project analyzes advertisement responses using a **Django backend** and a **Vite+React frontend**. It includes scripts to load, clean, and transform data, which are executed within Docker containers. Data is stored in a **MongoDB database**, and the project can be run with or without Docker by adjusting the MongoDB connection strings. There are three pages on the frontend which are home, analyse and predict. Home page displays most impactful plots and analytics. Analyse page allows users to select a combination of attributes to **plot** and get **analytics**. Predict page allows users to **preidct CTR and Conversion Rates** for an advertisement given its attributes using **Machine Learning Models**.
 
 ---
 
 ## Directory Structure
 
-```plaintext
+```
 project-root/
 ├── backend/
 ├── frontend/
@@ -41,6 +41,7 @@ project-root/
 
 ### Prerequisites
 
+- **Python 3.9** or higher installed on your machine.
 - **Docker** and **Docker Compose** installed on your machine.
 - A **MongoDB** instance, either locally or in a Docker container.
 - A google sheets api credentials and google form to collect data from google forms and fetch it using google sheets api
@@ -96,6 +97,20 @@ mongodb://host.docker.internal:27017 # for windows
 - **For Without Docker:** Use your MongoDB instance's URI, typically:
 ```
 mongodb://127.0.0.1:27017
+```
+
+### 4. Run Project without docker
+
+- To run project without docker run the following commands in different terminals in Frontend and Backend directories repsectively
+
+```
+cd Frontend
+npm run dev
+```
+
+```
+cd Backend
+python3 manage.py runserver
 ```
 
 ### 5. Build and Run Docker Containers
