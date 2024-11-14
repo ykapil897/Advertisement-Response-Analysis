@@ -29,3 +29,19 @@ services:
     network_mode: "host"
     command: >
       /bin/sh -c "while :; do python clean_and_transform.py; sleep 5; done"  # Runs every 5 minutes
+
+  frontend:
+    build:
+      context: ./home/vivek/DE-Project/Advertisement-Response-Analysis/Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./home/vivek/DE-Project/Advertisement-Response-Analysis/Backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
