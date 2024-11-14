@@ -51,7 +51,7 @@ def predictions_cr_ctr(input_data):
     # Convert specified columns to integers
     df['AdCost'] = df['AdCost'].astype(int)
     df['PurchaseAmount'] = df['PurchaseAmount'].astype(int)
-    # df['ModeEngagementTime'] = df['ModeEngagementTime'].astype(int)
+    df['ModeEngagementTime'] = df['ModeEngagementTime'].astype(int)
 
     # One-hot encode the specified columns
     encoded_df = pd.get_dummies(df, columns=['AdPlatformName', 'AdPlatformType', 'AdTopic', 'AdType'])
