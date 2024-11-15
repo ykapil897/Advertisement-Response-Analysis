@@ -5,7 +5,7 @@ This project analyzes advertisement responses using a **Django backend** and a *
 
 ---
 
-## Screenshots
+## Screenshots of Frontend
 
 #### Home Page
 ![Home Page](assets/Home_page.png)
@@ -47,6 +47,12 @@ project-root/
   - **ext_and_load.py**: Loads data from an Excel file into MongoDB.
   - **ld_gform_responses.py**: Loads new entries from Google Forms into MongoDB.
   - **clean_and_transform.py**: Cleans and transforms data, storing results in MongoDB.
+
+---
+
+## Project Architecture Overview
+
+![Project Architecture](assets/proj_arch.png)
 
 ---
 
@@ -137,11 +143,11 @@ docker-compose up --build
 docker-compose down
 ```
 
-### 6. Access the Frontend
+### 6. Access the Frontend when running on localhost at port 5173
 
 Open your browser and navigate to [http://localhost:5173](http://localhost:5173).
 
-### 7. Access the Backend
+### 7. Access the Backend when running on localhost at port 8000
 
 The Django backend will be running at [http://localhost:8000](http://localhost:8000).
 
