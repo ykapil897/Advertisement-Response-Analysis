@@ -5,6 +5,19 @@ This project analyzes advertisement responses using a **Django backend** and a *
 
 ---
 
+## Screenshots
+
+#### Home Page
+![Home Page](assets/Home_page.png)
+
+#### Analysis Page
+![Analysis Page](assets/Analysis_page.png)
+
+#### Predict Page
+![Predict Page](assets/Predict_page.png)
+
+---
+
 ## Directory Structure
 
 ```
