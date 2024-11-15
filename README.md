@@ -52,7 +52,7 @@ project-root/
 
 ## Project Architecture Overview
 
-![Project Architecture](assets/proj_arch.png)
+![Project Architecture](assets/proj_arch_img.png)
 
 ---
 
