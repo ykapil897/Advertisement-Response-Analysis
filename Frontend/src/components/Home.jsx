@@ -29,6 +29,24 @@ const Home = () => {
   }
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/chart/');
+        const data = await response.json();
+        const cachedImages = localStorage.getItem('images');
+        if (JSON.stringify(data) !== cachedImages) {
+          setImages(data);
+          localStorage.setItem('images', JSON.stringify(data));
+        }
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    }, 10000); // Fetch data every 60 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleViewImage = (image) => {
     setSelectedImage(image);
   };

@@ -1,7 +1,8 @@
 # views.py
 from django.http import JsonResponse, HttpResponse
+from django.utils.http import http_date
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
-from .chart_services import fetch_data_from_mongo, create_all_charts
+from .chart_services import fetch_data_from_mongo, create_all_charts, get_last_modified_time
 from .dyn_chart_services import create_custom_chart, get_chart_names_list
 from django.shortcuts import render
 import json
@@ -24,7 +25,10 @@ def get_chart(request):
     if request.method == 'GET':
         # Get all charts
         images = create_all_charts()
-        return JsonResponse(images, safe=False)
+        last_modified = get_last_modified_time()
+        response = JsonResponse(images, safe=False)
+        response['Last-Modified'] = http_date(last_modified.timestamp())
+        return response
 
     return HttpResponse(status=405)
 

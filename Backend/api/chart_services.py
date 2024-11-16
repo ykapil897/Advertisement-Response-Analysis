@@ -5,6 +5,7 @@ import seaborn as sns
 import io 
 import base64
 import plotly.express as px
+from datetime import datetime, timezone
 
 # Use the Agg backend for Matplotlib
 plt.switch_backend('Agg')
@@ -13,6 +14,12 @@ plt.switch_backend('Agg')
 # load_dotenv()
 # genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 # api_key = os.getenv('GEMINI_API_KEY')
+
+def get_last_modified_time():
+    # This function should return the last modification time of the data or charts
+    # For simplicity, we return the current time. You can customize this to return
+    # the actual last modification time of your data or charts.
+    return datetime.now(timezone.utc)
 
 def fetch_data_from_mongo(collection_name):
     collection = settings.MONGO_DB[collection_name]
@@ -592,7 +599,7 @@ def create_all_charts():
         {"title": "Engagement Time per Ad Type", "image": base64.b64encode(create_engagement_time_per_ad_type_box_plot()[0].getvalue()).decode('utf-8'), "summary": create_engagement_time_per_ad_type_box_plot()[1]},
         {"title": "Click-Through Rate by Ad Topic", "image": base64.b64encode(create_ctr_by_ad_topic_bar_chart()[0].getvalue()).decode('utf-8'), "summary": create_ctr_by_ad_topic_bar_chart()[1]},
         {"title": "Engagement Time by Device Type and Location", "image": base64.b64encode(create_engagement_time_by_device_and_location_heatmap()[0].getvalue()).decode('utf-8'), "summary": create_engagement_time_by_device_and_location_heatmap()[1]},
-        {"title": "Ad Cost vs. Rating", "image": base64.b64encode(create_ad_cost_vs_rating_scatter_plot()[0].getvalue()).decode('utf-8'), "summary": create_ad_cost_vs_rating_scatter_plot()[1]},
+        # {"title": "Ad Cost vs. Rating", "image": base64.b64encode(create_ad_cost_vs_rating_scatter_plot()[0].getvalue()).decode('utf-8'), "summary": create_ad_cost_vs_rating_scatter_plot()[1]},
         {"title": "Conversion Rate by Ad Duration", "image": base64.b64encode(create_conversion_rate_by_ad_duration_line_chart()[0].getvalue()).decode('utf-8'), "summary": create_conversion_rate_by_ad_duration_line_chart()[1]}
     ]
     return charts
