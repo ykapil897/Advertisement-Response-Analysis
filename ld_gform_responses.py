@@ -37,19 +37,25 @@ def get_google_sheet_data():
     return df
 
 def load_new_entries():
+    # print('here0')
     df = get_google_sheet_data()
-
+    # print('here1')
+    df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%m/%d/%Y %H:%M:%S')
     last_processed_timestamp = None
     if os.path.exists(LAST_PROCESSED_TIMESTAMP_FILE):
+        # print('here2')
         with open(LAST_PROCESSED_TIMESTAMP_FILE, "r") as f:
+            # print('here3')
             last_processed_timestamp = f.read().strip()
-
+            last_processed_timestamp = datetime.strptime(last_processed_timestamp, '%m/%d/%Y %H:%M:%S')
+    # print(last_processed_timestamp)
     if last_processed_timestamp:
         new_entries = df[df["Timestamp"] > last_processed_timestamp]
     else:
         new_entries = df
-
+    # print(new_entries)
     if not new_entries.empty:
+        # print('here4')
         ad_id_map = {
             "Titan Watch Ad": 1001,
             "Muscleblaze Ad": 1002,
@@ -63,7 +69,7 @@ def load_new_entries():
             "Lenskart Ad": 1010
         }
 
-        respondent_id_counter = 1001
+        respondent_id_counter = db["survey_respondents"].count_documents({}) + 1
 
         for _, row in new_entries.iterrows():
             respondent_data = {
@@ -106,10 +112,13 @@ def load_new_entries():
             respondent_id_counter += 1
 
         print(f"Loaded {len(new_entries)} new entries to MongoDB")
-        last_processed_timestamp = new_entries["Timestamp"].max()
+        last_processed_timestamp = new_entries["Timestamp"].max().strftime('%m/%d/%Y %H:%M:%S')
         with open(LAST_PROCESSED_TIMESTAMP_FILE, "w") as f:
+            # print('here5')
             f.write(last_processed_timestamp)
+    else:
+        print("No new entries to load")
 
 if __name__ == "__main__":
-    # load_new_entries()
-    pass
+    load_new_entries()
+    

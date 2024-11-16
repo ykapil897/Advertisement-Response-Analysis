@@ -15,10 +15,10 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./tmp:/app/tmp  # Persist temp files if needed
+      - /home/vivek/DE-Project/Advertisement-Response-Analysis/tmp:/app/tmp  # Persist temp files if needed
     network_mode: "host"
     command: >
-      /bin/sh -c "while :; do python ld_gform_responses.py; sleep 2; done"  # Runs every 2 minutes
+      /bin/sh -c "while :; do python ld_gform_responses.py; sleep 10; done"  # Runs every 10 seconds
 
   transformer:
     build:
@@ -28,7 +28,7 @@ services:
       - ./tmp:/app/tmp  # Persist temp files if needed
     network_mode: "host"
     command: >
-      /bin/sh -c "while :; do python clean_and_transform.py; sleep 5; done"  # Runs every 5 minutes
+      /bin/sh -c "while :; do python clean_and_transform.py; sleep 30; done"  # Runs every 30 seconds
 
   frontend:
     build:
