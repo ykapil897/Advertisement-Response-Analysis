@@ -1,5 +1,5 @@
 import pandas as pd
-import json
+import numpy as np
 import joblib
 
 # Define the categorical values for each column
@@ -85,6 +85,18 @@ def predictions_cr_ctr(input_data):
     cr_predictions = round(cr_predictions[0], 2)
     ctr_predictions = round(ctr_predictions[0], 2)
     # print(cr_predictions[0])
+
+    def sigmoid(x):
+        return 1 / (1 + np.exp(-x))
+    # Apply sigmoid if the value is negative or greater than 0.75
+    if cr_predictions < 0 or cr_predictions > 0.75:
+        cr_predictions = sigmoid(cr_predictions)
+
+    if ctr_predictions < 0 or ctr_predictions > 0.75:
+        ctr_predictions = sigmoid(ctr_predictions)
+
+    cr_predictions = round(cr_predictions, 2)
+    ctr_predictions = round(ctr_predictions, 2)
 
     # Create response array
     response = [
