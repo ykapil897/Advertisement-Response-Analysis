@@ -15,3 +15,4 @@ kaleido
 djongo
 python-decouple
 gunicorn
+dnspython>=2.0.0
