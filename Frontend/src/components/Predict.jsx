@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 
+// const API_BASE_URL = process.env.REACT_APP_LOCALHOST_URL;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Predict = () => {
   const [model1_inputs, setInputs1] = useState({Model: 'Model1', AdCost: '', PurchaseAmount: '', AdPlatformName: '', AdPlatformType: '', AdType: '', AdTopic: ''});
   const [model2_inputs, setInputs2] = useState({Model: 'Model2', Age: '', Education_Level: '', Gender: '', Income_Level: '', Location: '', Occupation: ''});

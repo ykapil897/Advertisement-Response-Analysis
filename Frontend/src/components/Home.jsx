@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faDownload } from '@fortawesome/free-solid-svg-icons';
 import DOMPurify from 'dompurify';
 
+// const API_BASE_URL = process.env.REACT_APP_LOCALHOST_URL;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Home = () => {
   const [images, setImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
