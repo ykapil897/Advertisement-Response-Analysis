@@ -131,13 +131,8 @@ WSGI_APPLICATION = 'my_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': config('DATABASE_NAME'),
-        'HOST': config('DATABASE_HOST'),
-        'PORT': config('DATABASE_PORT', cast=int),
-        'USER': '',  # Leave empty if not using authentication
-        'PASSWORD': '',  # Leave empty if not using authentication
-        # 'AUTH_SOURCE': '',  # Add this if your MongoDB requires an authentication source
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
