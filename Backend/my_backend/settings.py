@@ -22,6 +22,7 @@ MONGO_DB = MONGO_CLIENT["ad_response_analysis_tf"]
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+PORT = config('PORT', default=8000, cast=int)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
