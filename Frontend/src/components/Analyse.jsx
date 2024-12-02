@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faDownload } from '@fortawesome/free-solid-svg-icons';
 import DOMPurify from 'dompurify';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Analyse = () => {
   const [combinations, setCombinations] = useState([]);
   const [selectedCombination, setSelectedCombination] = useState('');
@@ -13,7 +15,7 @@ const Analyse = () => {
   useEffect(() => {
     const fetchCombinations = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/chartnames/');
+        const response = await fetch(`${API_BASE_URL}/api/chartnames/`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -52,7 +54,7 @@ const Analyse = () => {
       }
         try {
         // console.log(selectedCombination);
-        const response = await fetch('http://127.0.0.1:8000/api/customchart/', {
+        const response = await fetch(`${API_BASE_URL}/api/customchart/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

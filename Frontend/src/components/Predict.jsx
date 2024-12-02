@@ -12,7 +12,7 @@ const Predict = () => {
   useEffect(() => {
     const fetchDropdownOptions = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/predict/');
+        const response = await fetch(`${API_BASE_URL}/api/predict/`);
         const data = await response.json();
         setDropdownOptions(data);
       } catch (error) {
@@ -59,7 +59,7 @@ const Predict = () => {
 
     try {
       console.log(model1_inputs);
-      const response = await fetch('http://localhost:8000/api/predict/', {
+      const response = await fetch(`${API_BASE_URL}/api/predict/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const Predict = () => {
 
     try {
       console.log(model2_inputs);
-      const response = await fetch('http://localhost:8000/api/predict/', {
+      const response = await fetch(`${API_BASE_URL}/api/predict/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
