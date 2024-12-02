@@ -16,7 +16,7 @@ from decouple import config
 
 # MONGO_CLIENT = pymongo.MongoClient("mongodb://0.0.0.0:27017/") # without docker
 # MONGO_CLIENT = pymongo.MongoClient("mongodb://172.17.0.1:27017/") # for docker
-MONGO_CLIENT = pymongo.MongoClient("mongodb+srv://<vivek27>:<vivek%4027>@cluster0.mongodb.net/ad_response_analysis_tf?retryWrites=true&w=majority") # for mongodb atlas 
+MONGO_CLIENT = pymongo.MongoClient("mongodb+srv://vivek27:vivek%4027@cluster0.clnya.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") # for mongodb atlas 
 MONGO_DB = MONGO_CLIENT["ad_response_analysis_tf"]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
