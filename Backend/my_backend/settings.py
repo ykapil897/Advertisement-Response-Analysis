@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import pymongo
+from decouple import config
 
 # MONGO_CLIENT = pymongo.MongoClient("mongodb://0.0.0.0:27017/") # without docker
-MONGO_CLIENT = pymongo.MongoClient("mongodb://172.17.0.1:27017/") # for docker
+# MONGO_CLIENT = pymongo.MongoClient("mongodb://172.17.0.1:27017/") # for docker
+MONGO_CLIENT = pymongo.MongoClient("mongodb+srv://<vivek27>:<vivek%4027>@cluster0.mongodb.net/ad_response_analysis_tf?retryWrites=true&w=majority") # for mongodb atlas 
 MONGO_DB = MONGO_CLIENT["ad_response_analysis_tf"]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,12 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ybt0v%jiz7kxmzw5fqh^w#su)-)_(iafdgepf*jtq&n)@xm8v#'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', 'advertisement-response-analysis-backend.onrender.com']
 
 
 # Application definition
@@ -128,8 +130,13 @@ WSGI_APPLICATION = 'my_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': config('DATABASE_NAME'),
+        'HOST': config('DATABASE_HOST'),
+        'PORT': config('DATABASE_PORT', cast=int),
+        'USER': '',  # Leave empty if not using authentication
+        'PASSWORD': '',  # Leave empty if not using authentication
+        # 'AUTH_SOURCE': '',  # Add this if your MongoDB requires an authentication source
     }
 }
 

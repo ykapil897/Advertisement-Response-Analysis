@@ -12,3 +12,6 @@ joblib
 pymongo
 python-dotenv
 kaleido
+djongo
+python-decouple
+gunicorn
