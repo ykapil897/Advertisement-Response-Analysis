@@ -69,8 +69,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",  # The URL for your React development server
     "http://172.31.99.238:5173",
     "https://advertisement-response-analysis-3qb7kxp3l.vercel.app",  # The URL for your Vercel deployment
-    "https://advertisement-response-analysis-3qb7kxp3l.vercel.app/analyse",
-    "https://advertisement-response-analysis-3qb7kxp3l.vercel.app/predict",
 ]
 
 # If using cookies for authentication, add:
@@ -107,8 +105,6 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:5173",
     "http://172.31.99.238:5173",
     "https://advertisement-response-analysis-3qb7kxp3l.vercel.app",
-    "https://advertisement-response-analysis-3qb7kxp3l.vercel.app/analyse",
-    "https://advertisement-response-analysis-3qb7kxp3l.vercel.app/predict",
 ]
 
 # Add CSRF cookie name, this is optional but can help in some cases
