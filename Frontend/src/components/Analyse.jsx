@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExpand, faDownload } from '@fortawesome/free-solid-svg-icons';
 import DOMPurify from 'dompurify';
 
-// const API_BASE_URL = process.env.REACT_APP_LOCALHOST_URL;
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+// const API_BASE_URL = import.meta.env.VITE_REACT_APP_LOCALHOST_URL;
+const API_BASE_URL = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
 const Analyse = () => {
   const [combinations, setCombinations] = useState([]);
