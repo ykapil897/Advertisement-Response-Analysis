@@ -71,6 +71,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://advertisement-response-analysis-3qb7kxp3l.vercel.app",  # The URL for your Vercel deployment
 ]
 
+# If using cookies for authentication, add:
+CORS_ALLOW_CREDENTIALS = True
+
 # Allow specific HTTP methods
 CORS_ALLOW_METHODS = [
     "DELETE",
