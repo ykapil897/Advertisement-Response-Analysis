@@ -1,5 +1,5 @@
+import json
 import io
-from django.http import JsonResponse
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -356,6 +356,13 @@ def handler(request):
         return charts
     
     images = create_all_charts()
-    response = JsonResponse(images, safe=False)
-    return response
+    # response = JsonResponse(images, safe=False)
+    # return response
     # Return the plot and summary as JSON response
+    return {
+        "statusCode": 200,
+        "body": json.dumps(images),
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
