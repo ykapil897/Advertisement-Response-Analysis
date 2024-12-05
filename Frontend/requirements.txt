@@ -1,0 +1,6 @@
+pymongo
+matplotlib
+pandas
+seaborn
+plotly
+Django>=4.2
