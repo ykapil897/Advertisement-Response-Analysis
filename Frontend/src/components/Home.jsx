@@ -32,27 +32,27 @@ const Home = () => {
   }
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/chart/`);
-        const data = await response.json();
-        const cachedImages = localStorage.getItem('images');
-        if (JSON.stringify(data) !== cachedImages) {
-          setImages(data);
-          localStorage.setItem('images', JSON.stringify(data));
-        }
-      } catch (error) {
-        console.error('Error fetching images:', error);
-      }
-    }, 10000); // Fetch data every 60 seconds
+  // useEffect(() => {
+  //   const interval = setInterval(async () => {
+  //     try {
+  //       const response = await fetch(`${API_BASE_URL}/api/chart/`);
+  //       const data = await response.json();
+  //       const cachedImages = localStorage.getItem('images');
+  //       if (JSON.stringify(data) !== cachedImages) {
+  //         setImages(data);
+  //         localStorage.setItem('images', JSON.stringify(data));
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching images:', error);
+  //     }
+  //   }, 10000); // Fetch data every 60 seconds
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
-  const handleViewImage = (image) => {
-    setSelectedImage(image);
-  };
+  // const handleViewImage = (image) => {
+  //   setSelectedImage(image);
+  // };
 
   const handleDownloadImage = (image) => {
     const link = document.createElement('a');
