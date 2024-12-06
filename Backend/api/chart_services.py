@@ -611,7 +611,7 @@ def create_all_charts():
         # ("Engagement Time per Ad Type", create_engagement_time_per_ad_type_box_plot),
         ("Click-Through Rate by Ad Topic", create_ctr_by_ad_topic_bar_chart),
         # ("Engagement Time by Device Type and Location", create_engagement_time_by_device_and_location_heatmap),
-        ("Conversion Rate by Ad Duration", create_conversion_rate_by_ad_duration_line_chart)
+        # ("Conversion Rate by Ad Duration", create_conversion_rate_by_ad_duration_line_chart)
     ]
 
     charts = []
