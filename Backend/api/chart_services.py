@@ -584,22 +584,41 @@ def create_conversion_rate_by_ad_duration_line_chart():
     return buf, summary
 
 def create_all_charts():
-    charts = [
-        # {"title": "Ad Platform Type and Ad Type", "image": base64.b64encode(create_ad_platform_type_chart().getvalue()).decode('utf-8')},
-        # {"title": "Purchase Location and Influence Factor", "image": base64.b64encode(create_purchase_location_chart().getvalue()).decode('utf-8')},
-        # {"title": "Engagement Time and Rating", "image": base64.b64encode(create_engagement_time_chart().getvalue()).decode('utf-8')},
-        # {"title": "Response Type and Purchase Intent", "image": base64.b64encode(create_response_type_chart().getvalue()).decode('utf-8')},
-        # {"title": "Number of Responses Over Time", "image": base64.b64encode(create_response_date_chart().getvalue()).decode('utf-8')},
-        # {"title": "Number of Respondents in Various Age Ranges", "image": base64.b64encode(create_age_range_pie_chart().getvalue()).decode('utf-8')},
-        # {"title": "Income Level and Location", "image": base64.b64encode(create_income_range_chart().getvalue()).decode('utf-8')},
+    # charts = [
+    #     # {"title": "Ad Platform Type and Ad Type", "image": base64.b64encode(create_ad_platform_type_chart().getvalue()).decode('utf-8')},
+    #     # {"title": "Purchase Location and Influence Factor", "image": base64.b64encode(create_purchase_location_chart().getvalue()).decode('utf-8')},
+    #     # {"title": "Engagement Time and Rating", "image": base64.b64encode(create_engagement_time_chart().getvalue()).decode('utf-8')},
+    #     # {"title": "Response Type and Purchase Intent", "image": base64.b64encode(create_response_type_chart().getvalue()).decode('utf-8')},
+    #     # {"title": "Number of Responses Over Time", "image": base64.b64encode(create_response_date_chart().getvalue()).decode('utf-8')},
+    #     # {"title": "Number of Respondents in Various Age Ranges", "image": base64.b64encode(create_age_range_pie_chart().getvalue()).decode('utf-8')},
+    #     # {"title": "Income Level and Location", "image": base64.b64encode(create_income_range_chart().getvalue()).decode('utf-8')},
 
-        {"title": "Ad Platform Type and Ad Cost Efficiency", "image": base64.b64encode(create_ad_platform_type_and_cost_efficiency_bubble_chart()[0].getvalue()).decode('utf-8'), "summary": create_ad_platform_type_and_cost_efficiency_bubble_chart()[1]},
-        {"title": "Income Level vs. Engagement Time", "image": base64.b64encode(create_income_vs_engagement_time_box_plot()[0].getvalue()).decode('utf-8'), "summary": create_income_vs_engagement_time_box_plot()[1]},
-        {"title": "Response Type by Ad Platform", "image": base64.b64encode(create_response_type_by_ad_platform_grouped_bar_chart()[0].getvalue()).decode('utf-8'), "summary": create_response_type_by_ad_platform_grouped_bar_chart()[1]},
-        {"title": "Engagement Time per Ad Type", "image": base64.b64encode(create_engagement_time_per_ad_type_box_plot()[0].getvalue()).decode('utf-8'), "summary": create_engagement_time_per_ad_type_box_plot()[1]},
-        {"title": "Click-Through Rate by Ad Topic", "image": base64.b64encode(create_ctr_by_ad_topic_bar_chart()[0].getvalue()).decode('utf-8'), "summary": create_ctr_by_ad_topic_bar_chart()[1]},
-        {"title": "Engagement Time by Device Type and Location", "image": base64.b64encode(create_engagement_time_by_device_and_location_heatmap()[0].getvalue()).decode('utf-8'), "summary": create_engagement_time_by_device_and_location_heatmap()[1]},
-        # {"title": "Ad Cost vs. Rating", "image": base64.b64encode(create_ad_cost_vs_rating_scatter_plot()[0].getvalue()).decode('utf-8'), "summary": create_ad_cost_vs_rating_scatter_plot()[1]},
-        {"title": "Conversion Rate by Ad Duration", "image": base64.b64encode(create_conversion_rate_by_ad_duration_line_chart()[0].getvalue()).decode('utf-8'), "summary": create_conversion_rate_by_ad_duration_line_chart()[1]}
+    #     {"title": "Ad Platform Type and Ad Cost Efficiency", "image": base64.b64encode(create_ad_platform_type_and_cost_efficiency_bubble_chart()[0].getvalue()).decode('utf-8'), "summary": create_ad_platform_type_and_cost_efficiency_bubble_chart()[1]},
+    #     {"title": "Income Level vs. Engagement Time", "image": base64.b64encode(create_income_vs_engagement_time_box_plot()[0].getvalue()).decode('utf-8'), "summary": create_income_vs_engagement_time_box_plot()[1]},
+    #     {"title": "Response Type by Ad Platform", "image": base64.b64encode(create_response_type_by_ad_platform_grouped_bar_chart()[0].getvalue()).decode('utf-8'), "summary": create_response_type_by_ad_platform_grouped_bar_chart()[1]},
+    #     {"title": "Engagement Time per Ad Type", "image": base64.b64encode(create_engagement_time_per_ad_type_box_plot()[0].getvalue()).decode('utf-8'), "summary": create_engagement_time_per_ad_type_box_plot()[1]},
+    #     {"title": "Click-Through Rate by Ad Topic", "image": base64.b64encode(create_ctr_by_ad_topic_bar_chart()[0].getvalue()).decode('utf-8'), "summary": create_ctr_by_ad_topic_bar_chart()[1]},
+    #     {"title": "Engagement Time by Device Type and Location", "image": base64.b64encode(create_engagement_time_by_device_and_location_heatmap()[0].getvalue()).decode('utf-8'), "summary": create_engagement_time_by_device_and_location_heatmap()[1]},
+    #     # {"title": "Ad Cost vs. Rating", "image": base64.b64encode(create_ad_cost_vs_rating_scatter_plot()[0].getvalue()).decode('utf-8'), "summary": create_ad_cost_vs_rating_scatter_plot()[1]},
+    #     {"title": "Conversion Rate by Ad Duration", "image": base64.b64encode(create_conversion_rate_by_ad_duration_line_chart()[0].getvalue()).decode('utf-8'), "summary": create_conversion_rate_by_ad_duration_line_chart()[1]}
+    # ]
+    # return charts
+
+    chart_functions = [
+        ("Ad Platform Type and Ad Cost Efficiency", create_ad_platform_type_and_cost_efficiency_bubble_chart),
+        ("Income Level vs. Engagement Time", create_income_vs_engagement_time_box_plot),
+        ("Response Type by Ad Platform", create_response_type_by_ad_platform_grouped_bar_chart),
+        ("Engagement Time per Ad Type", create_engagement_time_per_ad_type_box_plot),
+        ("Click-Through Rate by Ad Topic", create_ctr_by_ad_topic_bar_chart),
+        ("Engagement Time by Device Type and Location", create_engagement_time_by_device_and_location_heatmap),
+        ("Conversion Rate by Ad Duration", create_conversion_rate_by_ad_duration_line_chart)
     ]
+
+    charts = []
+
+    for title, chart_func in chart_functions:
+        buf, summary = chart_func()
+        image = base64.b64encode(buf.getvalue()).decode('utf-8')
+        charts.append({"title": title, "image": image, "summary": summary})
+
     return charts
