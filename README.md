@@ -1,7 +1,7 @@
 # Advertisement Response Analysis Project
 
 ## Introduction
-This project analyzes advertisement responses using a **Django backend** and a **Vite+React frontend**. It includes scripts to load, clean, and transform data, which are executed within Docker containers. Data is stored in a **MongoDB database**, and the project can be run with or without Docker by adjusting the MongoDB connection strings. There are three pages on the frontend which are home, analyse and predict. Home page displays most impactful plots and analytics. Analyse page allows users to select a combination of attributes to **plot** and get **analytics**. Predict page allows users to **preidct CTR and Conversion Rates** for an advertisement given its attributes using **Machine Learning Models**.
+This project analyzes advertisement responses using a **FastAPI backend** and a **Vite+React frontend**. It includes scripts to load, clean, and transform data, which are executed within Docker containers. Data is stored in a **MongoDB database**, and the project can be run with or without Docker by adjusting the MongoDB connection strings. There are three pages on the frontend which are home, analyse and predict. Home page displays most impactful plots and analytics. Analyse page allows users to select a combination of attributes to **plot** and get **analytics**. Predict page allows users to **preidct CTR and Conversion Rates** for an advertisement given its attributes using **Machine Learning Models**.
 
 ---
 
@@ -41,7 +41,7 @@ project-root/
 
 ## How It Works
 
-- **Backend (Django):** Serves API endpoints for data handling.
+- **Backend (FastAPI):** Serves API endpoints for data handling.
 - **Frontend (Vite+React):** Provides a user interface to interact with the project.
 - **Data Loading and Transformation Scripts:**
   - **ext_and_load.py**: Loads data from an Excel file into MongoDB.
@@ -149,7 +149,7 @@ Open your browser and navigate to [http://localhost:5173](http://localhost:5173)
 
 ### 7. Access the Backend when running on localhost at port 8000
 
-The Django backend will be running at [http://localhost:8000](http://localhost:8000).
+The FastAPI backend will be running at [http://localhost:8000](http://localhost:8000).
 
 ---
 
@@ -167,7 +167,7 @@ The Django backend will be running at [http://localhost:8000](http://localhost:8
 - **scheduler:** Runs the `ld_gform_responses.py` script every 2 minutes.
 - **transformer:** Runs the `clean_and_transform.py` script every 5 minutes.
 - **frontend:** Runs the React frontend.
-- **backend:** Runs the Django backend.
+- **backend:** Runs the FastAPI backend.
 
 ---
 
